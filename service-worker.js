@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/azog-website/precache-manifest.41d743b621255f68e5ad27d604fade3b.js"
+  "/azog-website/precache-manifest.e6809d6719f1e24f0e620e0ee6bbe12b.js"
 );
 
 self.addEventListener('message', (event) => {
