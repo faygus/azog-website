@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9d1c46bca9c5a2eb8e77bda558de0dff",
+    "revision": "5179da803c18e8f74d4fc0e04c57f0f8",
     "url": "/azog-website/index.html"
   },
   {
-    "revision": "a1ae04aa8d645f90bff2",
-    "url": "/azog-website/static/css/main.535ec24d.chunk.css"
+    "revision": "18611cef4b4b7b604f2b",
+    "url": "/azog-website/static/css/main.fd4fa21a.chunk.css"
   },
   {
     "revision": "0efaa2b31709470f3828",
     "url": "/azog-website/static/js/2.f6fd55b2.chunk.js"
   },
   {
-    "revision": "a1ae04aa8d645f90bff2",
+    "revision": "18611cef4b4b7b604f2b",
     "url": "/azog-website/static/js/main.c491d193.chunk.js"
   },
   {
