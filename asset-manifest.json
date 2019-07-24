@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/azog-website/static/css/main.fd4fa21a.chunk.css",
+    "main.css": "/azog-website/static/css/main.24a51953.chunk.css",
     "main.js": "/azog-website/static/js/main.c491d193.chunk.js",
     "main.js.map": "/azog-website/static/js/main.c491d193.chunk.js.map",
     "runtime~main.js": "/azog-website/static/js/runtime~main.74a80d6e.js",
@@ -8,8 +8,8 @@
     "static/js/2.f6fd55b2.chunk.js": "/azog-website/static/js/2.f6fd55b2.chunk.js",
     "static/js/2.f6fd55b2.chunk.js.map": "/azog-website/static/js/2.f6fd55b2.chunk.js.map",
     "index.html": "/azog-website/index.html",
-    "precache-manifest.0d9f1805b82cfff99b2284d57f4603fa.js": "/azog-website/precache-manifest.0d9f1805b82cfff99b2284d57f4603fa.js",
+    "precache-manifest.2b9664d108f0a5954a194c8cca606d48.js": "/azog-website/precache-manifest.2b9664d108f0a5954a194c8cca606d48.js",
     "service-worker.js": "/azog-website/service-worker.js",
-    "static/css/main.fd4fa21a.chunk.css.map": "/azog-website/static/css/main.fd4fa21a.chunk.css.map"
+    "static/css/main.24a51953.chunk.css.map": "/azog-website/static/css/main.24a51953.chunk.css.map"
   }
 }
