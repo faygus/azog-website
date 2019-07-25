@@ -1,11 +1,10 @@
 import * as reactRedux from "react-redux";
-import { IDispatcher } from "./redux";
 
-export function connect<Reducer, Output, Input, OwnProps, State>(
+export function connect<Output, Input, OwnProps, State, Dispatcher>(
 	mapStateToProps:
 		reactRedux.MapStateToPropsParam<Input, OwnProps, State>,
 	mapDispatchToProps:
-		(dispatcher: IDispatcher<State, Reducer>) => Output):
+		(dispatcher: Dispatcher) => Output):
 	reactRedux.InferableComponentEnhancerWithProps<Input & Output, OwnProps> {
 	const reduxMapDispatchToProps = (dispatch: any) => {
 		const dispatcher = dispatch.$$dispatcher;

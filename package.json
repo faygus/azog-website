@@ -15,9 +15,9 @@
 		"typescript": "3.5.3"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
+		"start": "react-app-rewired start --scripts-version react-scripts",
+		"build": "react-app-rewired build --scripts-version react-scripts",
+		"test": "react-app-rewired test --scripts-version react-scripts",
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build"
@@ -39,6 +39,7 @@
 	},
 	"devDependencies": {
 		"@types/react": "^16.8.23",
-		"@types/react-redux": "^7.1.1"
+		"@types/react-redux": "^7.1.1",
+		"react-app-rewired": "^2.1.3"
 	}
 }

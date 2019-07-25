@@ -1,60 +1,109 @@
-import * as redux from "redux";
+import * as redux from 'redux';
 
-type SingleReducer<State, Payload> = (state: State, payload: Payload) => State;
+export abstract class BaseReducer<State> {
+	private _state: State | undefined;
 
-export type IDispatcher<State, Reducer> = {
-	[P in keyof Reducer]: Reducer[P] extends (state: State, ...args: infer U) => State ?
-	(...args: U) => void : never;
+	setState(state: State) {
+		this._state = state;
+	}
+
+	protected getState(): State {
+		if (!this._state) {
+			throw new Error('no state setted for reducer');
+		}
+		return this._state;
+	}
 }
 
-interface IAction {
+export interface IAction {
 	type: string;
-	payload: any;
+	args: any[];
 }
 
-export abstract class BaseStore<State, Reducer> {
-	private _dispatcher: IDispatcher<State, Reducer>;
-	private _reduxStore: redux.Store<State, IAction>;
+function randomString() {
+	return Math.random()
+		.toString(36)
+		.substring(7)
+		.split('')
+		.join('.');
+}
 
-	constructor(initialState: State,
-		protected _reducer: Reducer) {
-		const reducer = (state: State = initialState, action: IAction): State => {
-			const singleReducer = (_reducer as any)[action.type];
-			if (!singleReducer) {
-				console.warn('no reducer found for', action.type);
-				return state;
+type SingleReducer<State, T extends any[]> = (...args: T) => State;
+
+export abstract class BaseDispatcher<State> {
+	private _actionTypes = new Map<string, SingleReducer<State, any[]>>();
+	private _dispatch: ((action: IAction) => IAction) | undefined;
+
+	constructor(public reducer: BaseReducer<State>) {
+
+	}
+
+	setDispatch(dispatch: (action: IAction) => IAction): void {
+		this._dispatch = dispatch;
+		(<any>this._dispatch).$$dispatcher = this;
+	}
+
+	protected dispatch<T extends any[]>(reducer: SingleReducer<State, T>,
+		...args: T): void {
+		if (!this._dispatch) {
+			throw new Error('no dispach attached');
+		}
+		this._dispatch({
+			type: this.getActionType(reducer),
+			args
+		});
+	}
+
+	private getActionType<T extends any[]>(reducer: SingleReducer<State, T>): string {
+		for (const key of Array.from(this._actionTypes.keys())) {
+			if (this._actionTypes.get(key) === reducer) {
+				return key;
 			}
-			return singleReducer(state, action.payload);
 		}
-		this._reduxStore = redux.createStore(reducer);
-		this._dispatcher = this.buildDispatcher();
+		const type = randomString();
+		this._actionTypes.set(type, <any>reducer);
+		return type;
 	}
 
-	private buildDispatcher(): IDispatcher<State, Reducer> {
-		let res: any = {};
-		const proto = Object.getPrototypeOf(this._reducer);
-		const keys = Object.getOwnPropertyNames(proto).filter(a => a !== 'constructor');
-		for (const prop of keys) {
-			res[prop] = (payload: any) => {
-				this._reduxStore.dispatch({
-					type: prop,
-					payload
-				});
-			};
-		}
-		(<any>this._reduxStore.dispatch).$$dispatcher = res;
-		return res;
+	getReducerForAction(actionType: string): SingleReducer<State, any[]> | undefined {
+		return this._actionTypes.get(actionType);
 	}
+}
 
-	get reduxStore(): redux.Store<State, IAction> {
-		return this._reduxStore;
-	}
+class Store<State, Dispatcher> {
+	constructor(public dispatcher: Dispatcher,
+		private _reduxStore: redux.Store<State, IAction>) {
 
-	get dispatcher(): IDispatcher<State, Reducer> {
-		return this._dispatcher;
 	}
 
 	getState(): State {
 		return this._reduxStore.getState();
 	}
+
+	subscribe(handler: () => void): redux.Unsubscribe {
+		return this._reduxStore.subscribe(handler);
+	}
+
+	get reduxStore(): redux.Store<State, IAction> {
+		return this._reduxStore;
+	}
+}
+
+export function buildStore<State, Dispatcher extends BaseDispatcher<State>>(
+	initialState: State,
+	dispatcher: Dispatcher): Store<State, Dispatcher> {
+	const reduxReducer = (state: State | undefined, action: IAction): State => {
+		if (!state) state = initialState;
+		const type = action.type;
+		const singleReducer = dispatcher.getReducerForAction(type);
+		if (!singleReducer) {
+			console.warn('no reducer for action', type);
+			return state;
+		}
+		dispatcher.reducer.setState(state);
+		return singleReducer.bind(dispatcher.reducer)(...action.args);
+	};
+	const reduxStore = redux.createStore(reduxReducer);
+	dispatcher.setDispatch(reduxStore.dispatch);
+	return new Store(dispatcher, reduxStore);
 }

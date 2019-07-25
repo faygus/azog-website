@@ -1,7 +1,6 @@
 import { IState } from "../../../logic/state";
 import Header, { IInput, IOutput } from "./Header";
-import { IReducer } from "../../../logic/reducer";
-import { IDispatcher } from "../../../logic/redux-utils/redux";
+import { IDispatcher } from "../../../logic/reducer";
 import { connect } from "../../../logic/redux-utils/react-redux";
 
 const mapStateToProps = (state: IState): IInput => {
@@ -10,7 +9,7 @@ const mapStateToProps = (state: IState): IInput => {
 	};
 };
 
-const mapDispatchToProps = (dispatcher: IDispatcher<IState, IReducer>): IOutput => ({
+const mapDispatchToProps = (dispatcher: IDispatcher): IOutput => ({
 	selectSection(name: string) {
 		dispatcher.selectSection(name);
 	}

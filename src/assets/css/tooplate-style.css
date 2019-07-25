@@ -120,7 +120,7 @@ p {
 }
 .navbar-brand .logo{
 	margin-top: 22px;
-	/*background-image: url(/img/white_logo.png);*/
+	/*background-image: url(~img/white_logo.png);*/
 	display: inline-block;
 	width: 125px;
 	/*height: 32px;*/
@@ -128,7 +128,7 @@ p {
 }
 .header.active .navbar-brand .logo{
 	margin-top: 22px;
-	/*background-image: url(/img/black_logo.png);*/
+	/*background-image: url(~img/black_logo.png);*/
 	display: inline-block;
 	width: 125px;
 	/*height: 32px;*/
@@ -264,52 +264,52 @@ ul.cd-hero-slider {
 }
 
 .first-service .icon {
-	background-image: url(/img/first-service-main.png);
+	background-image: url(~img/first-service-main.png);
 	height: 32px;
 	width: 32px;
 	display: inline-block;
 }
 
 .first-service:hover .icon {
-	background-image: url(/img/first-service-white.png);
+	background-image: url(~img/first-service-white.png);
 }
 
 .second-service .icon {
-	background-image: url(/img/second-service-main.png);
+	background-image: url(~img/second-service-main.png);
 	height: 32px;
 	width: 22px;
 	display: inline-block;
 }
 
 .second-service:hover .icon {
-	background-image: url(/img/second-service-white.png);
+	background-image: url(~img/second-service-white.png);
 }
 
 .third-service .icon {
-	background-image: url(/img/third-service-main.png);
+	background-image: url(~img/third-service-main.png);
 	height: 32px;
 	width: 32px;
 	display: inline-block;
 }
 
 .third-service:hover .icon {
-	background-image: url(/img/third-service-white.png);
+	background-image: url(~img/third-service-white.png);
 }
 
 .fourth-service .icon {
-	background-image: url(/img/fourth-service-main.png);
+	background-image: url(~img/fourth-service-main.png);
 	height: 32px;
 	width: 32px;
 	display: inline-block;
 }
 
 .fourth-service:hover .icon {
-	background-image: url(/img/fourth-service-white.png);
+	background-image: url(~img/fourth-service-white.png);
 }
 
 
 #what-we-do {
-	background-image: url(/img/what-we-do-bg.png);
+	background-image: url(~img/what-we-do-bg.png);
 	width: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -431,7 +431,7 @@ ul.cd-hero-slider {
 /* BLOG */
 
 #blog {
-	background-image: url(/img/blog-bg.png);
+	background-image: url(~img/blog-bg.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;
@@ -570,7 +570,7 @@ ul.cd-hero-slider {
 }
 
 #contact {
-	background-image: url(/img/contact-bg.png);
+	background-image: url(~img/contact-bg.png);
 	background-repeat: no-repeat;
 	width: 100%;
 	background-size: cover;
@@ -685,7 +685,7 @@ footer ul li a:hover {
 /* LIGHT BOX */
 
 body:after {
-  content: url(/img/close.png) url(/img/loading.gif) url(/img/prev.png) url(/img/next.png);
+  content: url(~img/close.png) url(~img/loading.gif) url(~img/prev.png) url(~img/next.png);
   display: none;
 }
 
@@ -764,7 +764,7 @@ body.lb-disable-scrolling {
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  background: url(/img/loading.gif) no-repeat;
+  background: url(~img/loading.gif) no-repeat;
 }
 
 .lb-nav {
@@ -795,7 +795,7 @@ body.lb-disable-scrolling {
   width: 34%;
   left: 0;
   float: left;
-  background: url(/img/prev.png) left 48% no-repeat;
+  background: url(~img/prev.png) left 48% no-repeat;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -webkit-transition: opacity 0.6s;
@@ -813,7 +813,7 @@ body.lb-disable-scrolling {
   width: 64%;
   right: 0;
   float: right;
-  background: url(/img/next.png) right 48% no-repeat;
+  background: url(~img/next.png) right 48% no-repeat;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   -webkit-transition: opacity 0.6s;
@@ -881,7 +881,7 @@ body.lb-disable-scrolling {
   float: right;
   width: 30px;
   height: 30px;
-  background: url(/img/close.png) top right no-repeat;
+  background: url(~img/close.png) top right no-repeat;
   text-align: right;
   outline: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
